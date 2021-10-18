@@ -1,0 +1,9 @@
+main: dev.jd.xacustoms.App
+name: XACustoms
+version: 0.1
+api-version: 1.17
+depend: [NBTAPI]
+commands:
+  ironcarrot:
+    description: Gives an iron carrot.
+    usage: "Usage: /<command>"
