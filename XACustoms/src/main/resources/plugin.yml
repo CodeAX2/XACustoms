@@ -7,3 +7,6 @@ commands:
   ironcarrot:
     description: Gives an iron carrot.
     usage: "Usage: /<command>"
+  currency:
+    description: Gives an item of currency.
+    usage: "Usage: /<command>"    
