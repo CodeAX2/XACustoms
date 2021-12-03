@@ -1,7 +1,7 @@
 main: dev.jd.xacustoms.App
 name: XACustoms
 version: 0.1
-api-version: 1.17
+api-version: 1.18
 depend: [NBTAPI]
 commands:
   ironcarrot:
