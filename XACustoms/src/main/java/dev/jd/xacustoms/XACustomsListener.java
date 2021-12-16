@@ -20,6 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityPotionEffectEvent.Cause;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -155,6 +156,9 @@ public class XACustomsListener implements Listener {
 			diamondCarrotPlayers.remove(e.getEntity().getUniqueId());
 		}
 		if (emeraldTeam.getEntries().contains(e.getEntity().getName())) {
+			if (e.getEntity().getLastDamageCause().getCause().equals(DamageCause.FALL)) {
+				e.setDeathMessage(e.getEntity().getDisplayName() + " died of Emerald Carrot overdose.");
+			}
 			emeraldTeam.removeEntry(e.getEntity().getName());
 		}
 	}
