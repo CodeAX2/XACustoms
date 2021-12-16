@@ -12,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class XACustomsListener implements Listener {
 
@@ -59,6 +61,11 @@ public class XACustomsListener implements Listener {
 			} else {
 				e.getPlayer().setFireTicks(20 * 60);
 			}
+		} else if (e.getItem().isSimilar(CustomItems.getDiamondCarrot())) {
+			e.getPlayer().setMaxHealth(10);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+				e.getPlayer().setMaxHealth(20);
+			}, 20 * 60);
 		}
 	}
 

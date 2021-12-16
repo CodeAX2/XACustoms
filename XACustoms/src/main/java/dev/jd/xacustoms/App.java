@@ -32,6 +32,11 @@ public class App extends JavaPlugin {
 				((Player) sender).getInventory().addItem(CustomItems.getCurrency());
 				return true;
 			}
+		} else if (label.equalsIgnoreCase("diamondcarrot")) {
+			if (sender.isOp() && sender instanceof Player) {
+				((Player) sender).getInventory().addItem(CustomItems.getDiamondCarrot());
+				return true;
+			}
 		}
 
 		return false;

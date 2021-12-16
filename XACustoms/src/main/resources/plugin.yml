@@ -10,3 +10,6 @@ commands:
   currency:
     description: Gives an item of currency.
     usage: "Usage: /<command>"    
+  diamondcarrot:
+    description: Gives an item of currency.
+    usage: "Usage: /<command>"   

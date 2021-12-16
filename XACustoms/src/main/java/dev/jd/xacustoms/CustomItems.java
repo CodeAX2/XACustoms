@@ -42,8 +42,20 @@ public class CustomItems {
 		NBTCompound display = nbti.addCompound("display");
 		display.setString("Name", "{\"text\":\"Dalir\",\"italic\":\"false\",\"color\":\"green\"}");
 
-		System.out.println(nbti.toString());
+		return nbti.getItem();
+	}
 
+	public static ItemStack getDiamondCarrot() {
+		ItemStack ironCarrot = new ItemStack(Material.GOLDEN_CARROT, 1);
+
+		ironCarrot.addEnchantment(Glow.getEnchantment(), 1);
+
+		NBTItem nbti = new NBTItem(ironCarrot);
+
+		nbti.setInteger("CustomModelData", 8280003);
+
+		NBTCompound display = nbti.addCompound("display");
+		display.setString("Name", "{\"text\":\"Diamond Carrot\",\"italic\":\"false\"}");
 		return nbti.getItem();
 	}
 
