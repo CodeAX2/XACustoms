@@ -11,5 +11,8 @@ commands:
     description: Gives an item of currency.
     usage: "Usage: /<command>"    
   diamondcarrot:
-    description: Gives an item of currency.
+    description: Gives a diamond carrot.
+    usage: "Usage: /<command>"   
+  emeraldcarrot:
+    description: Gives an emerald carrot.
     usage: "Usage: /<command>"   

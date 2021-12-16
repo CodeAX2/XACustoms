@@ -3,7 +3,6 @@ package dev.jd.xacustoms;
 import java.util.Arrays;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -46,11 +45,11 @@ public class CustomItems {
 	}
 
 	public static ItemStack getDiamondCarrot() {
-		ItemStack ironCarrot = new ItemStack(Material.GOLDEN_CARROT, 1);
+		ItemStack diamondCarrot = new ItemStack(Material.GOLDEN_CARROT, 1);
 
-		ironCarrot.addEnchantment(Glow.getEnchantment(), 1);
+		diamondCarrot.addEnchantment(Glow.getEnchantment(), 1);
 
-		NBTItem nbti = new NBTItem(ironCarrot);
+		NBTItem nbti = new NBTItem(diamondCarrot);
 
 		nbti.setInteger("CustomModelData", 8280003);
 
@@ -58,5 +57,20 @@ public class CustomItems {
 		display.setString("Name", "{\"text\":\"Diamond Carrot\",\"italic\":\"false\"}");
 		return nbti.getItem();
 	}
+
+	public static ItemStack getEmeraldCarrot() {
+		ItemStack emeraldCarrot = new ItemStack(Material.GOLDEN_CARROT, 1);
+
+		emeraldCarrot.addEnchantment(Glow.getEnchantment(), 1);
+
+		NBTItem nbti = new NBTItem(emeraldCarrot);
+
+		nbti.setInteger("CustomModelData", 8280004);
+
+		NBTCompound display = nbti.addCompound("display");
+		display.setString("Name", "{\"text\":\"Emerald Carrot\",\"italic\":\"false\",\"color\":\"green\"}");
+		return nbti.getItem();
+	}
+
 
 }
