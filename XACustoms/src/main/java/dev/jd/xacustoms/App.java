@@ -18,6 +18,7 @@ public class App extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		listener.onServerShutdown();
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

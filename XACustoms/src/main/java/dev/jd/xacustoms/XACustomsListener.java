@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -17,8 +18,11 @@ public class XACustomsListener implements Listener {
 
 	private App plugin;
 
+	private List<Player> visualFirePlayers;
+
 	public XACustomsListener(App plugin) {
 		this.plugin = plugin;
+		visualFirePlayers = new ArrayList<>();
 	}
 
 	@EventHandler
@@ -51,14 +55,23 @@ public class XACustomsListener implements Listener {
 			Random r = new Random();
 			if (r.nextDouble() < 0.5) {
 				e.getPlayer().setVisualFire(true);
+				visualFirePlayers.add(e.getPlayer());
 
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
 					e.getPlayer().setVisualFire(false);
+					visualFirePlayers.remove(e.getPlayer());
+
 				}, 20 * 60);
 
 			} else {
 				e.getPlayer().setFireTicks(20 * 60);
 			}
+		}
+	}
+
+	public void onServerShutdown() {
+		for (Player p : visualFirePlayers) {
+			p.setVisualFire(false);
 		}
 	}
 
