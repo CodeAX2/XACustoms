@@ -1,7 +1,6 @@
 package dev.jd.xacustoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -132,6 +131,7 @@ public class XACustomsListener implements Listener {
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
+
 		if (visualFirePlayers.contains(e.getPlayer().getUniqueId())) {
 			e.getPlayer().setVisualFire(true);
 		} else {

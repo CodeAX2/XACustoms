@@ -16,3 +16,6 @@ commands:
   emeraldcarrot:
     description: Gives an emerald carrot.
     usage: "Usage: /<command>"   
+  getcurrency:
+    description: Gives currency based on play time.
+    usage: "Usage: /<command>"

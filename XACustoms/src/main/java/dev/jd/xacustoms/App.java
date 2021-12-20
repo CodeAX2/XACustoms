@@ -6,26 +6,39 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class App extends JavaPlugin {
 
 	private XACustomsListener listener;
+	private CurrencyHandler currencyHandler;
 
 	@Override
 	public void onEnable() {
+
+		saveDefaultConfig();
+
 		listener = new XACustomsListener(this);
 		getServer().getPluginManager().registerEvents(listener, this);
+
 		Glow.register();
 
 		addCraftingRecipes();
+
+		currencyHandler = new CurrencyHandler("currencyMain.yml", this);
+		currencyHandler.startLoop();
 
 	}
 
 	@Override
 	public void onDisable() {
-		listener.onServerShutdown();
+		if (listener != null)
+			listener.onServerShutdown();
+
+		if (currencyHandler != null)
+			currencyHandler.shutdown();
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -50,9 +63,19 @@ public class App extends JavaPlugin {
 				((Player) sender).getInventory().addItem(CustomItems.getEmeraldCarrot());
 				return true;
 			}
+		} else if (label.equalsIgnoreCase("getcurrency")) {
+			if (sender instanceof Player) {
+				Player p = (Player) sender;
+				currencyHandler.givePlayerCurrency(p);
+				return true;
+			}
 		}
 
 		return false;
+	}
+
+	public XACustomsListener getListener() {
+		return listener;
 	}
 
 	private void addCraftingRecipes() {
